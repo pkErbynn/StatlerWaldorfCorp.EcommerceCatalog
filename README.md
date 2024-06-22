@@ -42,9 +42,19 @@ app.UseDiscoveryClient();
 ```
 *Why*: This sets up the necessary configurations and middleware for the Catalog Service that uses Eureka for service discovery.
 
-3. Create a catalog endpoint that queries the inventory service:
+3. Create a catalog endpoint that queries the inventory service
+
+Run `dotnet run` and access
+
+```bash
+GET https://localhost:7125/api/products/123
+GET https://localhost:7125/api/products/{sku} where sku=123
+```
+This retrieves product details, which will invoke the inventory service, whose url is dynamically discovered via Eureka
 
 *Why*: This endpoint in the Catalog Service queries the Inventory Service for inventory data, demonstrating service-to-service communication using Eureka for discovery.
+
+
 
 ## In Sum...
 
