@@ -61,9 +61,3 @@ This retrieves product details, which will invoke the inventory service, whose u
 
 - Inventory Service: Provides inventory data and registers with Eureka.
 - Catalog Service: Queries the Inventory Service using a discovery-enabled HTTP client, registered with Eureka.
-
-
-
-----------------------------------
-
-----------------------------------
