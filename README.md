@@ -261,7 +261,7 @@ Issue: If the Inventory Service goes down, the Catalog Service will continue to 
 === Use Case: Inventory and Catalog Services with Eureka Discovery Service
 
 
-Inventory Service Configuration
+Inventory Service Configuration - appsettings.json:
 ```json
 {
   "spring": {
@@ -297,7 +297,35 @@ Inventory Service Configuration
 When you start a new instance of the Inventory Service, it will automatically register itself with the Eureka server.
 
 
-Catalog Service Configuration
+Inventory Configuration - Program.cs
+```c#
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Common.Http.Discovery;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure Eureka and Discovery Client
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Services.AddDiscoveryClient(builder.Configuration);
+
+....
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+...
+app.UseDiscoveryClient(); // discovery added to middleware
+
+app.Run();
+
+```
+
+
+Catalog Configuration
+appsettings.json
 
 ```json
 {
@@ -320,7 +348,7 @@ Benefit: New instances register themselves with Eureka automatically. No need to
 Example: As new instances of the Inventory Service come online, they register with Eureka, and the Catalog Service automatically discovers them.
 
 
-HTTP Client Configuration in Catalog's Program.cs
+Program.cs
 ```c#
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -341,7 +369,7 @@ builder.Services.AddScoped<IInventoryClient, HttpInventoryClient>();
 var app = builder.Build();
 
 ...
-app.UseDiscoveryClient();
+app.UseDiscoveryClient(); // discovery added to middleware
 
 app.Run();
 
@@ -381,6 +409,8 @@ public class HttpInventoryClient: IInventoryClient
 }
 
 ```
+
+Catalog Controller:
 
 ```c#
 [HttpGet("{sku}")]
