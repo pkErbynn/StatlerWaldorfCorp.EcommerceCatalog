@@ -54,7 +54,7 @@ This retrieves product details, which will invoke the inventory service, whose u
 
 *Why*: This endpoint in the Catalog Service queries the Inventory Service for inventory data, demonstrating service-to-service communication using Eureka for discovery.
 
-*Find more doc [HERE...](https://localhost:7125/api/products/123)* 
+*Find more doc [HERE...](./StatlerWaldorfCorp.EcommerceCatalog/doc.md)* 
 
 
 ## In Sum...
