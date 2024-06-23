@@ -11,7 +11,7 @@ This setup allows services to dynamically discover and communicate with each oth
 Extending from the Inventory Service here - https://github.com/pkErbynn/StatlerWaldorfCorp.EcommerceInventory
 
 
-1. Configure Eureka in appsettings.json
+1. **Configure Eureka in appsettings.json**
 ```json
 {
   "eureka": {
@@ -26,9 +26,9 @@ Extending from the Inventory Service here - https://github.com/pkErbynn/StatlerW
   }
 }
 ```
-*Why*: This configuration specifies the Eureka server's URL and sets the application name, allowing Eureka to manage service registration and discovery.
+**Why**: This configuration specifies the Eureka server's URL and sets the application name, allowing Eureka to manage service registration and discovery.
 
-2. Configure Eureka and Discovery Client in middleware in Program.cs:
+2. **Configure Eureka and Discovery Client in middleware in Program.cs**:
 
 ```bash
 ...
@@ -40,9 +40,9 @@ app.UseDiscoveryClient();
 ...
 
 ```
-*Why*: This sets up the necessary configurations and middleware for the Catalog Service that uses Eureka for service discovery.
+**Why**: This sets up the necessary configurations and middleware for the Catalog Service that uses Eureka for service discovery.
 
-3. Create a catalog endpoint that queries the inventory service
+3. **Create a catalog endpoint that queries the inventory service**
 
 Run `dotnet run` and access
 
@@ -52,7 +52,7 @@ GET https://localhost:7125/api/products/{sku} where sku=123
 ```
 This retrieves product details, which will invoke the inventory service, whose url is dynamically discovered via Eureka
 
-*Why*: This endpoint in the Catalog Service queries the Inventory Service for inventory data, demonstrating service-to-service communication using Eureka for discovery.
+**Why**: This endpoint in the Catalog Service queries the Inventory Service for inventory data, demonstrating service-to-service communication using Eureka for discovery.
 
 *Find more doc [HERE...](./StatlerWaldorfCorp.EcommerceCatalog/doc.md)* 
 
