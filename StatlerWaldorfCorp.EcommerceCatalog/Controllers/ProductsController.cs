@@ -40,3 +40,5 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Controllers
         }
     }
 }
+
+// SKU = "stock keeping unit" = unique identifier for product in inventory.
