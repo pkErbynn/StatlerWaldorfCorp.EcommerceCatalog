@@ -2,6 +2,9 @@
 
 The Steeltoe Discovery Client package integrates Eureka with .NET applications, enabling service registration and discovery.
 
+## High-level Architecture
+![Architecture](./System%20Architecture%20Service%20discovery.png)
+
 ## Setting Up
 Demonstration of creating a resilient and discoverable microservices architecture using .NET 6, Steeltoe, and Eureka. 
 
@@ -56,6 +59,9 @@ This retrieves product details, which will invoke the inventory service, whose u
 
 *Find more documentation [HERE...](./StatlerWaldorfCorp.EcommerceCatalog/doc.md)* 
 
+4. **Addon: Retry Policy with Polly Library**
+- HttpClient with Polly: Add a retry policy with WaitAndRetryAsync which retries up to 5 times with an exponential backoff.
+- Implementation [here...](./StatlerWaldorfCorp.EcommerceCatalog/Policies/ClientPolicy.cs)
 
 ## In Sum...
 
