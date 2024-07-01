@@ -1,4 +1,5 @@
 using StatlerWaldorfCorp.EcommerceCatalog.InventoryClient;
+using StatlerWaldorfCorp.EcommerceCatalog.Policies;
 using StatlerWaldorfCorp.EcommerceCatalog.Repository;
 using Steeltoe.Discovery.Client;
 
@@ -15,7 +16,8 @@ builder.Services.AddLogging();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDiscoveryClient(builder.Configuration);
+// builder.Services.AddDiscoveryClient(builder.Configuration);
+builder.Services.AddPollyPolicyService();
 builder.Services.AddScoped<IInventoryClient, HttpInventoryClient>();
 builder.Services.AddScoped<IProductRepository, MemoryProductRepository>();
 

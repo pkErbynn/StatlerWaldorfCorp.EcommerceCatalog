@@ -1,10 +1,8 @@
+# Service Discovery
 
-intro
----
 service discovery particularly valuable in dynamic, scalable microservices environments where services need to be robust and adaptable to changes and failures.
-
-how the Catalog Service discovers the Inventory Service at runtime:
 ---
+## How the Catalog Service discovers the Inventory Service at runtime
 
 1. Service Registration:
 
@@ -40,10 +38,9 @@ The HTTP client then makes the request to the selected instance of the Inventory
 This process is transparent to the service code, which only needs to use the configured HTTP client.
 
 
-----
-Scenario: Inventory Service API Changes
+## Scenario: Inventory Service API changes
 
-scenario where the Inventory Service API changes, and the Catalog Service can’t find the Inventory Service. This will help illustrate the dynamics of service discovery and how to handle such situations.
+In a scenario where the Inventory Service API changes, and the Catalog Service can’t find the Inventory Service. This will help illustrate the dynamics of service discovery and how to handle such situations.
 
 1. Initial Setup:
 
@@ -65,11 +62,10 @@ Eureka responds with the available instances of the Inventory Service.
 The Catalog Service constructs a request to the old endpoint /api/inventory/{productId}.
 Since the Inventory Service has changed its endpoint to /api/items/{productId}, the request fails with a 404 Not Found error.
 
-
 Eureka continuously monitors the health of registered services. If an instance fails health checks, it is marked as unavailable.
 
-----
-Benefits:
+---
+## Key Advantages Service Discovery Brings to the Table
 Using a service discovery method for runtime URL resolution provides several advantages over statically configuring service URLs in configuration files. Here are the key benefits:
 
 1. Dynamic Scalability and Load Balancing
@@ -92,21 +88,26 @@ Easier Service Updates: With service discovery, you can update or deploy new ver
 Health Monitoring: Service registries like Eureka often include health monitoring and status checking capabilities, providing visibility into the health and status of services.
 Service Metrics: You can gather metrics on service usage, performance, and availability, which can help with capacity planning and identifying potential issues.
 
-Comparison with Static Configuration
+### Comparison with Static Configuration
 
-Fixed URLs: 
+- Fixed URLs: 
 Service URLs are hardcoded in configuration files.
-Manual Updates: 
+
+- Manual Updates: 
 Any change in service URLs requires manual updates and redeployment of configuration files.
-Limited Scalability: 
+
+- Limited Scalability: 
 Static URLs do not support dynamic scaling or automatic failover.
-Potential for Errors: 
+
+- Potential for Errors: 
 Increased risk of misconfigurations due to manual updates.
 
-Summary
+### Summary
 Using service discovery offers significant advantages over static configuration, particularly in dynamic and complex microservices environments. It enhances scalability, resilience, and operational efficiency while reducing the risk of configuration errors and simplifying the management of service dependencies. By dynamically resolving service URLs at runtime, service discovery ensures that your applications can adapt to changes and maintain high availability and performance.
 
 ----
+
+## Handling Service Unavailability
 
 both approaches (static configuration and service discovery) will return an error if a service is unavailable. However, service discovery offers additional benefits that go beyond simply detecting an unavailable service. Here’s a more detailed comparison:
 

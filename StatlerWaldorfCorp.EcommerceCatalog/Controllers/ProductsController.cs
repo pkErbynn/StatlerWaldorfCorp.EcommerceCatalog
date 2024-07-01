@@ -34,7 +34,8 @@ namespace StatlerWaldorfCorp.EcommerceCatalog.Controllers
             var product = new
             {
                 Product = this._productRepository.Get(sku),
-                Status = this._inventoryClient.GetStockStatusAsync(sku).Result
+                // Status = this._inventoryClient.GetStockStatusAsync(sku).Result
+                Status = this._inventoryClient.GetStockStatusWithRetryAsync(sku).Result
             };
             return this.Ok(product);
         }

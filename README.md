@@ -9,7 +9,7 @@ This setup allows services to dynamically discover and communicate with each oth
 
 ### Setting Up Eureka Server
 Extending from the Inventory Service here - https://github.com/pkErbynn/StatlerWaldorfCorp.EcommerceInventory
-
+  - where Eureka server is set up
 
 1. **Configure Eureka in appsettings.json**
 ```json
@@ -54,7 +54,7 @@ This retrieves product details, which will invoke the inventory service, whose u
 
 **Why**: This endpoint in the Catalog Service queries the Inventory Service for inventory data, demonstrating service-to-service communication using Eureka for discovery.
 
-*Find more doc [HERE...](./StatlerWaldorfCorp.EcommerceCatalog/doc.md)* 
+*Find more documentation [HERE...](./StatlerWaldorfCorp.EcommerceCatalog/doc.md)* 
 
 
 ## In Sum...
